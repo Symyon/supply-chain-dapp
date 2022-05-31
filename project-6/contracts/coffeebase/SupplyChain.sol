@@ -96,43 +96,43 @@ contract SupplyChain {
 
   // Define a modifier that checks if an item.state of a upc is Processed
   modifier processed(uint _upc) {
-
+require(items[_upc].itemState == State.Processed);
     _;
   }
   
   // Define a modifier that checks if an item.state of a upc is Packed
   modifier packed(uint _upc) {
-
+    require(items[_upc].itemState == State.Packed);
     _;
   }
 
   // Define a modifier that checks if an item.state of a upc is ForSale
   modifier forSale(uint _upc) {
-
+    require(items[_upc].itemState == State.ForSale);
     _;
   }
 
   // Define a modifier that checks if an item.state of a upc is Sold
   modifier sold(uint _upc) {
-
+    require(items[_upc].itemState == State.Sold);
     _;
   }
   
   // Define a modifier that checks if an item.state of a upc is Shipped
   modifier shipped(uint _upc) {
-
+    require(items[_upc].itemState == State.Shipped);
     _;
   }
 
   // Define a modifier that checks if an item.state of a upc is Received
   modifier received(uint _upc) {
-
+    require(items[_upc].itemState == State.Received);
     _;
   }
 
   // Define a modifier that checks if an item.state of a upc is Purchased
   modifier purchased(uint _upc) {
-    
+    require(items[_upc].itemState == State.Purchased);
     _;
   }
 
@@ -156,23 +156,26 @@ contract SupplyChain {
   function harvestItem(uint _upc, address _originFarmerID, string memory _originFarmName, string memory _originFarmInformation, string memory  _originFarmLatitude, string memory  _originFarmLongitude, string memory  _productNotes) public 
   {
     // Add the new item as part of Harvest
+    items[_upc] = Item(_upc, sku, msg.sender, _originFarmerID, _originFarmName, _originFarmInformation, _originFarmLatitude, _originFarmLongitude, _upc + sku, _productNotes, 0, State.Harvested, address(0), address(0), address(0));
     
     // Increment sku
     sku = sku + 1;
     // Emit the appropriate event
+    emit Harvested(_upc);
     
   }
 
   // Define a function 'processtItem' that allows a farmer to mark an item 'Processed'
-  function processItem(uint _upc) public 
-  // Call modifier to check if upc has passed previous supply chain stage
-  
+  function processItem(uint _upc) public verifyCaller(items[_upc].ownerID) harvested(_upc) 
+  // Call modifier to check if upc has passed previous supply chain stage  
   // Call modifier to verify caller of this function
   
   {
     // Update the appropriate fields
+    items[_upc].itemState = State.Processed;
     
     // Emit the appropriate event
+    emit Processed(_upc);
     
   }
 
