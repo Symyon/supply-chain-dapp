@@ -132,10 +132,6 @@ contract SupplyChain is
         _;
     }
 
-    function kill() public onlyOwner {
-        selfdestruct(owner());
-    }
-
     // Define a function 'harvestItem' that allows a farmer to mark an item 'Harvested'
     function harvestItem(
         uint _upc,
@@ -291,6 +287,10 @@ contract SupplyChain is
         items[_upc].itemState = State.Purchased;
         // Emit the appropriate event
         emit Purchased(_upc);
+    }
+
+    function kill() public onlyOwner {
+        selfdestruct(owner());
     }
 
     // Define a function 'fetchItemBufferOne' that fetches the data
