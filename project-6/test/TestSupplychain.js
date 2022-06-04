@@ -14,13 +14,12 @@ contract("SupplyChain", function (accounts) {
   const originFarmLongitude = "144.341490";
   var productID = sku + upc;
   const productNotes = "Best beans for Espresso";
-  const productPrice = web3.utils.toWei("1", "ether");
+  var productPrice = web3.utils.toWei("0", "ether");
   var itemState = 0;
   const distributorID = accounts[2];
   const retailerID = accounts[3];
   const consumerID = accounts[4];
   const emptyAddress = "0x00000000000000000000000000000000000000";
-  var price = 0;
   var itemOwnerID = accounts[0];
 
   ///Available Accounts
@@ -116,17 +115,6 @@ contract("SupplyChain", function (accounts) {
   // 2nd Test
   it("Testing smart contract function processItem() that allows a farmer to process coffee", async () => {
     const supplyChain = await SupplyChain.deployed();
-    await supplyChain.addFarmer(originFarmerID, { from: ownerID });
-    await supplyChain.harvestItem(
-      upc,
-      originFarmerID,
-      originFarmName,
-      originFarmInformation,
-      originFarmLatitude,
-      originFarmLongitude,
-      productNotes,
-      { from: originFarmerID }
-    );
 
     // Declare and Initialize a variable for event
     var eventEmitted = false;
@@ -139,7 +127,6 @@ contract("SupplyChain", function (accounts) {
     // Mark an item as Processed by calling function processtItem()
     await supplyChain.processItem(upc, { from: originFarmerID });
     itemState = 1;
-    itemOwnerID = originFarmerID;
 
     // Retrieve the just now saved item from blockchain by calling function fetchItem()
     const resultBufferOne = await supplyChain.fetchItemBufferOne.call(upc);
@@ -163,12 +150,9 @@ contract("SupplyChain", function (accounts) {
       eventEmitted = true;
     });
 
-    await supplyChain.addFarmer(originFarmerID, { from: ownerID });
-
     // Mark an item as Packed by calling function packItem()
     await supplyChain.packItem(upc, { from: originFarmerID });
     itemState = 2;
-    itemOwnerID = originFarmerID;
 
     // Retrieve the just now saved item from blockchain by calling function fetchItem()
     const resultBufferOne = await supplyChain.fetchItemBufferOne.call(upc);
@@ -192,13 +176,10 @@ contract("SupplyChain", function (accounts) {
       eventEmitted = true;
     });
 
-    await supplyChain.addFarmer(originFarmerID, { from: ownerID });
-
     // Mark an item as ForSale by calling function sellItem()
-    price = 15;
-    await supplyChain.sellItem(upc, price, { from: originFarmerID });
+    productPrice = web3.utils.toWei("1", "ether");
+    await supplyChain.sellItem(upc, productPrice, { from: originFarmerID });
     itemState = 3;
-    itemOwnerID = originFarmerID;
 
     // Retrieve the just now saved item from blockchain by calling function fetchItem()
     const resultBufferOne = await supplyChain.fetchItemBufferOne.call(upc);
@@ -207,7 +188,11 @@ contract("SupplyChain", function (accounts) {
     // Verify the result set
     assert.equal(resultBufferOne[1], upc, "Error: Invalid item UPC");
     assert.equal(resultBufferTwo[5], 3, "Error: Invalid item State");
-    assert.equal(resultBufferTwo[4], price, "Error: Invalid product price");
+    assert.equal(
+      resultBufferTwo[4],
+      productPrice,
+      "Error: Invalid ProductPrice"
+    );
     assert.equal(eventEmitted, true, "Invalid event emitted");
   });
 
@@ -225,7 +210,8 @@ contract("SupplyChain", function (accounts) {
     });
 
     // Mark an item as Sold by calling function buyItem()
-    await supplyChain.buyItem(upc, { from: distributorID });
+    sendValue = web3.utils.toWei("1", "ether");
+    await supplyChain.buyItem(upc, { from: distributorID, value: sendValue });
     itemState = 4;
     itemOwnerID = distributorID;
 
@@ -242,7 +228,6 @@ contract("SupplyChain", function (accounts) {
   // 6th Test
   it("Testing smart contract function shipItem() that allows a distributor to ship coffee", async () => {
     const supplyChain = await SupplyChain.deployed();
-    await supplyChain.addDistributor(distributorID, { from: ownerID });
 
     // Declare and Initialize a variable for event
     var eventEmitted = false;
@@ -334,7 +319,7 @@ contract("SupplyChain", function (accounts) {
     assert.equal(resultBufferOne[1], upc, "Error: Invalid item UPC");
     assert.equal(
       resultBufferOne[2],
-      ownerID,
+      itemOwnerID,
       "Error: Missing or Invalid ownerID"
     );
     assert.equal(

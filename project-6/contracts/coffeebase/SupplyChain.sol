@@ -253,7 +253,7 @@ contract SupplyChain is
         // Call modifier to check if upc has passed previous supply chain stage
         sold(_upc)
         // Call modifier to verify caller of this function
-        verifyCaller(items[_upc].distributorID)
+        verifyCaller(items[_upc].ownerID)
         onlyDistributor
     {
         // Update the appropriate fields
