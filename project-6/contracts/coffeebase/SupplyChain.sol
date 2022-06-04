@@ -1,5 +1,11 @@
 pragma solidity ^0.5.16;
 
+import '../coffeeaccesscontrol/DistributorRole.sol';
+import '../coffeeaccesscontrol/ConsumerRole.sol';
+import '../coffeeaccesscontrol/RetailerRole.sol';
+import '../coffeeaccesscontrol/FarmerRole.sol';
+import '../coffeecore/Ownable.sol';
+
 contract SupplyChain is
     Ownable,
     FarmerRole,
