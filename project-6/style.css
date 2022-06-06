@@ -25,7 +25,7 @@ button {
     background-color: #4CAF50;
     border: none;
     color: white;
-    background-color: #00BCD4;
+    background-color: #826F66;
     font-size: 16px;
     padding: 16px 32px;
     text-decoration: none;
@@ -46,9 +46,10 @@ button {
 }
 
 .form-group {
-  background-color:#0097A7;
+  background-color:#C69B7B;
   color:black;
-  width:50%;
+  width:100%;
+  max-width: 1440px;
   padding:30px;
   border-radius: 4px;
   background-color: #f8f8f8;
@@ -63,4 +64,45 @@ button {
 
 .horizontal-rule {
   background-color:#BDBDBD;
+}
+
+.fetched-data {
+  background-color:#C69B7B;
+  color:white;
+  width:100%;
+  padding:20px;
+}
+
+.page-column {
+  padding-left: 64px; 
+  display: flex; 
+  flex-direction: column; 
+  align-self: flex-end; 
+  justify-content: flex-end;
+
+}
+
+.buttons-group {
+
+  flex-direction: row; 
+}
+
+.fetched-data-table {
+  display: flex;
+  flex-direction: row;
+  height: 64px;
+  align-items: center;
+}
+
+.btn-fetchOne {
+  height: 48px;
+  align-content: center;
+  width:228px;
+  margin-left: 16px;
+}
+
+.title {
+  display: flex;
+ align-items: center;
+ justify-content: center;
 }

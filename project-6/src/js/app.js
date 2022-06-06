@@ -99,6 +99,7 @@ App = {
   },
 
   initSupplyChain: function () {
+    web3.eth.defaultAccount = web3.eth.accounts[0];
     /// Source the truffle compiled smart contracts
     var jsonSupplyChain = "../../build/contracts/SupplyChain.json";
 
@@ -119,6 +120,10 @@ App = {
 
   bindEvents: function () {
     $(document).on("click", App.handleButtonClick);
+  },
+
+  setOwnerID: function (value) {
+    console.log();
   },
 
   handleButtonClick: async function (event) {
@@ -155,10 +160,7 @@ App = {
         return await App.purchaseItem(event);
         break;
       case 9:
-        return await App.fetchItemBufferOne(event);
-        break;
-      case 10:
-        return await App.fetchItemBufferTwo(event);
+        return await App.fetchItem(event);
         break;
     }
   },
@@ -166,22 +168,27 @@ App = {
   harvestItem: function (event) {
     event.preventDefault();
     var processId = parseInt($(event.target).data("id"));
+    App.readForm();
 
     App.contracts.SupplyChain.deployed()
       .then(function (instance) {
         return instance.harvestItem(
           App.upc,
-          App.metamaskAccountID,
+          App.originFarmerID,
           App.originFarmName,
           App.originFarmInformation,
           App.originFarmLatitude,
           App.originFarmLongitude,
-          App.productNotes
+          App.productNotes,
+          {
+            from: App.metamaskAccountID,
+          }
         );
       })
       .then(function (result) {
         $("#ftc-item").text(result);
         console.log("harvestItem", result);
+        return instance.fetchItemBufferOne(App.upc);
       })
       .catch(function (err) {
         console.log(err.message);
@@ -228,7 +235,7 @@ App = {
 
     App.contracts.SupplyChain.deployed()
       .then(function (instance) {
-        const productPrice = web3.toWei(1, "ether");
+        const productPrice = web3.toWei(0.00001, "ether");
         console.log("productPrice", productPrice);
         return instance.sellItem(App.upc, App.productPrice, {
           from: App.metamaskAccountID,
@@ -315,40 +322,78 @@ App = {
       });
   },
 
-  fetchItemBufferOne: function () {
-    ///   event.preventDefault();
-    ///    var processId = parseInt($(event.target).data('id'));
-    App.upc = $("#upc").val();
-    console.log("upc", App.upc);
+  fetchItemBufferOne: function (upc) {
+    console.log("buffer 1 upc", upc);
 
     App.contracts.SupplyChain.deployed()
       .then(function (instance) {
-        return instance.fetchItemBufferOne(App.upc);
+        return instance.fetchItemBufferOne(upc);
       })
       .then(function (result) {
-        $("#ftc-item").text(result);
-        console.log("fetchItemBufferOne", result);
+        document.querySelector("#result-upc").value = result[0];
+        document.querySelector("#result-sku").value = result[1];
+        document.querySelector("#result-owner-id").value = result[2];
+        document.querySelector("#result-farmer-id").value = result[3];
+        document.querySelector("#result-farmer-name").value = result[4];
+        document.querySelector("#result-farm-info").value = result[5];
+        document.querySelector("#result-farm-lat").value = result[6];
+        document.querySelector("#result-farm-long").value = result[7];
+        console.log("fetchItemBufferOne", JSON.stringify(result));
       })
       .catch(function (err) {
         console.log(err.message);
       });
   },
 
-  fetchItemBufferTwo: function () {
-    ///    event.preventDefault();
-    ///    var processId = parseInt($(event.target).data('id'));
-
+  fetchItemBufferTwo: function (upc) {
+    console.log("buffer 2 upc", upc);
     App.contracts.SupplyChain.deployed()
       .then(function (instance) {
-        return instance.fetchItemBufferTwo.call(App.upc);
+        return instance.fetchItemBufferTwo.call(upc);
       })
       .then(function (result) {
-        $("#ftc-item").text(result);
+        document.querySelector("#result-product-id").value = result[2];
+        document.querySelector("#result-product-notes").value = result[3];
+        document.querySelector("#result-product-price").value = result[4];
+        function getState(state) {
+          switch (state) {
+            case 0:
+              return "Harvested";
+            case 1:
+              return "Processed";
+            case 2:
+              return "Packed";
+            case 3:
+              return "ForSale";
+            case 4:
+              return "Sold";
+            case 5:
+              return "Shipped";
+            case 6:
+              return "Received";
+            case 7:
+              return "Purchased";
+            default:
+              return "No State";
+          }
+        }
+        document.querySelector("#result-item-state").value = getState(
+          Number(result[5])
+        );
+        document.querySelector("#result-distributor-id").value = result[6];
+        document.querySelector("#result-retailer-id").value = result[7];
+        document.querySelector("#result-consumer-id").value = result[8];
         console.log("fetchItemBufferTwo", result);
       })
       .catch(function (err) {
         console.log(err.message);
       });
+  },
+
+  fetchItem: function (event) {
+    let upc = $("#overview-upc").val();
+    App.fetchItemBufferOne(upc);
+    App.fetchItemBufferTwo(upc);
   },
 
   fetchEvents: function () {
