@@ -200,16 +200,6 @@
                 />
                 <br />
               </div>
-
-              <div class="form-break"></div>
-              <h2>Transaction History<span id="ftc-history"></span></h2>
-              <div>
-                <ul id="ftc-events">
-                  <!-- Events will appear here from app.js -->
-                </ul>
-                <br />
-                <hr />
-              </div>
             </td>
             <td class="page-column">
               <h2>Farm Details</h2>
@@ -223,14 +213,6 @@
               /><br />
               UPC <br />
               <input id="upc" name="upc" placeholder="1" type="number" /><br />
-              Farmer ID <br />
-              <input
-                id="origin-farmer-id"
-                name="originFarmerID"
-                placeholder="0x99c289eb2aacec289631a5ddf62cf27a63d4494f"
-                size="50"
-                type="text"
-              /><br />
               Farm Name <br />
               <input
                 id="origin-farm-name"
@@ -259,7 +241,16 @@
                 placeholder="144.341490"
                 type="text"
               /><br />
-              <br />
+
+              Active ID <br />
+              <input
+                id="active-id"
+                name="activeID"
+                placeholder="Not connected"
+                disabled
+                size="50"
+                type="text"
+              /><br />
               <div class="buttons-group">
                 <button
                   class="btn-harvest"
@@ -308,32 +299,15 @@
                 placeholder="1"
                 type="number"
               /><br />
-              Distributor ID <br />
+              Active ID <br />
               <input
-                id="distributor-id"
-                name="distributorID"
-                placeholder="0xf1b1bcd24dad92303dd9fe78be639f7bcf9c238d"
-                size="50"
-                type="text"
-              />
-              <br />
-              Retailer ID <br />
-              <input
-                id="retailer-id"
-                name="retailerID"
-                placeholder="0x0fb2bfefd526966c87efa19f6693d50971763fc2"
+                id="active-id"
+                name="activeID"
+                placeholder="Not connected"
+                disabled
                 size="50"
                 type="text"
               /><br />
-              Distributor ID <br />
-              <input
-                id="consumero-id"
-                name="consumerID"
-                placeholder="0x5d777e9127b28fb119e81a6304278a0a21bef1c4"
-                size="50"
-                type="text"
-              /><br />
-              <br />
               <div class="buttons-group">
                 <button class="btn-buy" id="button" type="button" data-id="5">
                   Buy
@@ -358,10 +332,70 @@
                   Purchase
                 </button>
               </div>
+              <div class="form-break"></div>
+              <h2>User Account Details</h2>
+
+              Active ID <br />
+              <input
+                id="active-id"
+                name="activeID"
+                placeholder="Not connected"
+                disabled
+                size="50"
+                type="text"
+              /><br />
+              Check ID role or add ID to a role<br />
+              <input
+                id="check-id"
+                name="checkID"
+                placeholder="0x99c289eb2aacec289631a5ddf62cf27a63d4494f"
+                size="50"
+                type="text"
+              />
+              <div class="buttons-group">
+                <button class="button-medium" type="button" data-id="10">
+                  Is Farmer
+                </button>
+                <button class="button-big" type="button" data-id="11">
+                  Add Farmer
+                </button>
+              </div>
+              <div class="buttons-group">
+                <button class="button-medium" type="button" data-id="12">
+                  Is Distributor
+                </button>
+                <button class="button-big" type="button" data-id="13">
+                  Add Distributor
+                </button>
+              </div>
+              <div class="buttons-group">
+                <button class="button-medium" type="button" data-id="14">
+                  Is Retailer
+                </button>
+                <button class="button-big" type="button" data-id="15">
+                  Add Retailer
+                </button>
+              </div>
+              <div class="buttons-group">
+                <button class="button-medium" type="button" data-id="16">
+                  Is Consumer
+                </button>
+                <button class="button-big" type="button" data-id="17">
+                  Add Consumer
+                </button>
+              </div>
             </td>
           </tr>
         </tbody>
       </table>
+      <h2>Transaction History<span id="ftc-history"></span></h2>
+      <div>
+        <ul id="ftc-events">
+          <!-- Events will appear here from app.js -->
+        </ul>
+        <br />
+        <hr />
+      </div>
     </div>
     <div id="ftc-harvest">
       <div class="form-break"></div>

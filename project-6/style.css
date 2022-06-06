@@ -77,13 +77,9 @@ button {
   padding-left: 64px; 
   display: flex; 
   flex-direction: column; 
-  align-self: flex-end; 
-  justify-content: flex-end;
-
 }
 
 .buttons-group {
-
   flex-direction: row; 
 }
 
@@ -91,7 +87,7 @@ button {
   display: flex;
   flex-direction: row;
   height: 64px;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .btn-fetchOne {
@@ -105,4 +101,11 @@ button {
   display: flex;
  align-items: center;
  justify-content: center;
+}
+
+.button-big {
+  width: 180px;
+}
+.button-medium {
+  width: 160px;
 }

@@ -95,6 +95,10 @@ App = {
       }
       console.log("getMetaskID:", res);
       App.metamaskAccountID = res[0];
+      const activeIDNodes = document.querySelectorAll("#active-id");
+      activeIDNodes.forEach(function (node) {
+        node.value = res[0];
+      });
     });
   },
 
@@ -161,6 +165,30 @@ App = {
         break;
       case 9:
         return await App.fetchItem(event);
+        break;
+      case 10:
+        return await App.isFarmer(event);
+        break;
+      case 11:
+        return await App.addFarmer(event);
+        break;
+      case 12:
+        return await App.isDistributor(event);
+        break;
+      case 13:
+        return await App.addDistributor(event);
+        break;
+      case 14:
+        return await App.isRetailer(event);
+        break;
+      case 15:
+        return await App.addRetailer(event);
+        break;
+      case 16:
+        return await App.isConsumer(event);
+        break;
+      case 17:
+        return await App.addConsumer(event);
         break;
     }
   },
@@ -394,6 +422,78 @@ App = {
     let upc = $("#overview-upc").val();
     App.fetchItemBufferOne(upc);
     App.fetchItemBufferTwo(upc);
+  },
+
+  isFarmer: function (event) {
+    event.preventDefault();
+    var processId = parseInt($(event.target).data("id"));
+
+    App.contracts.SupplyChain.deployed()
+      .then(function (instance) {
+        const checkAccount = document.querySelector("#check-id").value;
+        return instance.isFarmer(checkAccount);
+      })
+      .then(function (result) {
+        $("#ftc-item").text(result);
+        console.log("isFarmer", result);
+      })
+      .catch(function (err) {
+        console.log(err.message);
+      });
+  },
+
+  isDistributor: function (event) {
+    event.preventDefault();
+    var processId = parseInt($(event.target).data("id"));
+
+    App.contracts.SupplyChain.deployed()
+      .then(function (instance) {
+        const checkAccount = document.querySelector("#check-id").value;
+        return instance.isDistributor(checkAccount);
+      })
+      .then(function (result) {
+        $("#ftc-item").text(result);
+        console.log("isDistributor", result);
+      })
+      .catch(function (err) {
+        console.log(err.message);
+      });
+  },
+
+  isRetailer: function (event) {
+    event.preventDefault();
+    var processId = parseInt($(event.target).data("id"));
+
+    App.contracts.SupplyChain.deployed()
+      .then(function (instance) {
+        const checkAccount = document.querySelector("#check-id").value;
+        return instance.isRetailer(checkAccount);
+      })
+      .then(function (result) {
+        $("#ftc-item").text(result);
+        console.log("isRetailer", result);
+      })
+      .catch(function (err) {
+        console.log(err.message);
+      });
+  },
+
+  isConsumer: function (event) {
+    event.preventDefault();
+    var processId = parseInt($(event.target).data("id"));
+
+    App.contracts.SupplyChain.deployed()
+      .then(function (instance) {
+        const checkAccount = document.querySelector("#check-id").value;
+        return instance.isConsumer(checkAccount);
+      })
+      .then(function (result) {
+        $("#ftc-item").text(result);
+        console.log("isConsumer", result);
+      })
+      .catch(function (err) {
+        console.log(err.message);
+      });
   },
 
   fetchEvents: function () {
