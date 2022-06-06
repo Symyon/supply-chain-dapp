@@ -442,6 +442,24 @@ App = {
       });
   },
 
+  addFarmer: function (event) {
+    event.preventDefault();
+    var processId = parseInt($(event.target).data("id"));
+
+    App.contracts.SupplyChain.deployed()
+      .then(function (instance) {
+        const checkAccount = document.querySelector("#check-id").value;
+        return instance.addFarmer(checkAccount);
+      })
+      .then(function (result) {
+        $("#ftc-item").text(result);
+        console.log("addFarmer", result);
+      })
+      .catch(function (err) {
+        console.log(err.message);
+      });
+  },
+
   isDistributor: function (event) {
     event.preventDefault();
     var processId = parseInt($(event.target).data("id"));
@@ -454,6 +472,24 @@ App = {
       .then(function (result) {
         $("#ftc-item").text(result);
         console.log("isDistributor", result);
+      })
+      .catch(function (err) {
+        console.log(err.message);
+      });
+  },
+  
+  addDistributor: function (event) {
+    event.preventDefault();
+    var processId = parseInt($(event.target).data("id"));
+
+    App.contracts.SupplyChain.deployed()
+      .then(function (instance) {
+        const checkAccount = document.querySelector("#check-id").value;
+        return instance.addDistributor(checkAccount);
+      })
+      .then(function (result) {
+        $("#ftc-item").text(result);
+        console.log("addDistributor", result);
       })
       .catch(function (err) {
         console.log(err.message);
@@ -478,6 +514,24 @@ App = {
       });
   },
 
+  addRetailer: function (event) {
+    event.preventDefault();
+    var processId = parseInt($(event.target).data("id"));
+
+    App.contracts.SupplyChain.deployed()
+      .then(function (instance) {
+        const checkAccount = document.querySelector("#check-id").value;
+        return instance.addRetailer(checkAccount);
+      })
+      .then(function (result) {
+        $("#ftc-item").text(result);
+        console.log("addRetailer", result);
+      })
+      .catch(function (err) {
+        console.log(err.message);
+      });
+  },
+
   isConsumer: function (event) {
     event.preventDefault();
     var processId = parseInt($(event.target).data("id"));
@@ -490,6 +544,24 @@ App = {
       .then(function (result) {
         $("#ftc-item").text(result);
         console.log("isConsumer", result);
+      })
+      .catch(function (err) {
+        console.log(err.message);
+      });
+  },
+
+  addConsumer: function (event) {
+    event.preventDefault();
+    var processId = parseInt($(event.target).data("id"));
+
+    App.contracts.SupplyChain.deployed()
+      .then(function (instance) {
+        const checkAccount = document.querySelector("#check-id").value;
+        return instance.addConsumer(checkAccount);
+      })
+      .then(function (result) {
+        $("#ftc-item").text(result);
+        console.log("addConsumer", result);
       })
       .catch(function (err) {
         console.log(err.message);
