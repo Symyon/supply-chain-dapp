@@ -73,10 +73,18 @@ button {
   padding:20px;
 }
 
-.page-column {
+.page-column-left {
+  padding-left: 64px; 
+  /* display: flex;  */
+  flex-direction: column;
+  border-right: #CCCCCC88 solid 1px;
+  padding-right: 64px;
+}
+
+.page-column-right {
   padding-left: 64px; 
   display: flex; 
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 .buttons-group {
@@ -89,14 +97,15 @@ button {
   display: flex;
   flex-direction: row;
   height: 64px;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .btn-fetchOne {
   height: 48px;
   align-content: center;
   width:228px;
-  margin-left: 16px;
+  margin-left: 32px;
+  border-radius: 4px;
 }
 
 .title {
@@ -108,10 +117,12 @@ button {
 .button-big {
   width: 180px;
   margin-right: 32px;
+  border-radius: 4px;
 }
 
 .button-medium {
   width: 160px;
+  border-radius: 4px;
 }
 
 .is-role {
@@ -120,4 +131,16 @@ button {
 
 .is-not-role {
   color: #e4241d;
+}
+
+.btn-buy {
+  border-radius: 4px;
+  flex: 1;
+}
+
+.form-error {
+  color: #e4241d;
+  margin-top: 8px;
+  margin-bottom: 0px;
+  margin-left: 16px;
 }
