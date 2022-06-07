@@ -126,6 +126,7 @@ App = {
 
   clearErrors: function () {
     document.querySelector("#harvest-error").style.display = "none";
+    document.querySelector("#process-error").style.display = "none";
   },
 
   handleButtonClick: async function (event) {
@@ -243,7 +244,19 @@ App = {
 
   processItem: function (event) {
     event.preventDefault();
+
+    function showError(error) {
+      const errorNode = document.querySelector("#process-error");
+      errorNode.style.display = "block";
+      errorNode.textContent = error;
+    }
+
     const processUpc = $("#process-upc").val();
+    if (!processUpc) {
+      showError("Please fill in UPC");
+      return;
+    }
+
     App.contracts.SupplyChain.deployed()
       .then(function (instance) {
         return instance.processItem(processUpc, {
@@ -255,13 +268,25 @@ App = {
         console.log("processItem", result);
       })
       .catch(function (err) {
+        showError(err.message);
         console.log(err.message);
       });
   },
 
   packItem: function (event) {
     event.preventDefault();
+    function showError(error) {
+      const errorNode = document.querySelector("#process-error");
+      errorNode.style.display = "block";
+      errorNode.textContent = error;
+    }
+
     const processUpc = $("#process-upc").val();
+    if (!processUpc) {
+      showError("Please fill in UPC");
+      return;
+    }
+
     App.contracts.SupplyChain.deployed()
       .then(function (instance) {
         return instance.packItem(processUpc, { from: App.metamaskAccountID });
@@ -271,6 +296,7 @@ App = {
         console.log("packItem", result);
       })
       .catch(function (err) {
+        showError(err.message);
         console.log(err.message);
       });
   },
