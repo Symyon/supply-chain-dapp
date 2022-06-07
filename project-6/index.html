@@ -19,233 +19,226 @@
     <p style="text-align: center">
       Prove the authenticity of coffee using the Ethereum blockchain.
     </p>
-  </div>
-  <div class="form-group">
-    <table style="width: 100wh; max-width: 1440px" border="0">
-      <tbody>
-        <tr>
-          <td class="page-column-left">
-            <h2 style="text-align: left">Product Overview</h2>
-            <div>
-              UPC <br />
-              <div class="fetched-data-table" border="0">
-                <input id="overview-upc" name="upc" value="1" type="number" />
-                <button class="btn-fetchOne" id="button" type="button" data-id="9">
-                  Fetch Data
-                </button>
-              </div>
-            </div>
-            <div class="button-div"><br /></div>
-            Fetched Data <br />
-            <br />
-            <div class="fetched-data" style="width: 649px">
-              <table style="width: 576px" border="0">
-                <tbody>
-                  <tr>
-                    <td>
-                      UPC <br />
-                      <input id="result-upc" name="upc" disabled="disabled" value="" type="number" />
-                    </td>
-                    <td>
-                      SKU <br />
-                      <input id="result-sku" name="sku" disabled="disabled" value="" type="number" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              Current Owner ID <br />
-              <input id="result-owner-id" name="ownerID" disabled="disabled" size="50" type="text" />
-              <br />
-              Origin Farmer ID <br />
-              <input id="result-farmer-id" name="farmerID" disabled="disabled" value="" size="50" type="text" />
-              <br />
-              <div style="text-align: justify">Origin Farmer Name</div>
-              <input id="result-farmer-name" name="farmerName" disabled="disabled" value="" size="50" type="text" />
-              <br />
-              Origin Farm Information <br />
-              <input id="result-farm-info" name="farmInfo" disabled="disabled" value="" size="50" type="text" />
-              <br />
-              Origin Farm Latitude <br />
-              <input id="result-farm-lat" name="originFarmLatitude" disabled="disabled" value="" size="50"
-                type="text" />
-              <br />
-              Origin Farm Longitude <br />
-              <input id="result-farm-long" name="originFarmLongitude" disabled="disabled" value="" size="50"
-                type="text" />
-              <br />Product ID <br />
-              <input id="result-product-id" name="productID" disabled="disabled" value="" size="50" type="text" />
-              <br />Product Notes <br />
-              <input id="result-product-notes" name="productNotes" disabled="disabled" value="" size="50" type="text" />
-              <br />Product Price <br />
-              <input id="result-product-price" name="productPrice" disabled="disabled" value="" size="50" type="text" />
-              <br />Item State <br />
-              <input id="result-item-state" name="itemState" disabled="disabled" value="" size="50" type="text" />
-              <br />Distributor ID <br />
-              <input id="result-distributor-id" name="distributorID" disabled="disabled" value="" size="50"
-                type="text" />
-              <br />Retailer ID <br />
-              <input id="result-retailer-id" name="reatilerID" disabled="disabled" value="" size="50" type="text" />
-              <br />Consumer ID <br />
-              <input id="result-consumer-id" name="consumerID" disabled="disabled" value="" size="50" type="text" />
-              <br />
-            </div>
-            <br />
-            <h2>User Account Details</h2>
 
-            Active ID <br />
-            <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
-            Check ID role or add ID to a role<br />
-            <input id="check-id" name="checkID" placeholder="0x99c289eb2aacec289631a5ddf62cf27a63d4494f" size="50"
+    <div class="form-group">
+      <div class="content">
+        <div class="page-column-left">
+          <h2 style="text-align: left">Product Overview</h2>
+          <div>
+            UPC <br />
+            <div class="fetched-data-table" border="0">
+              <input id="overview-upc" name="upc" value="1" type="number" />
+              <button class="btn-fetchOne" id="button" type="button" data-id="9">
+                Fetch Data
+              </button>
+            </div>
+          </div>
+          <div class="button-div"><br /></div>
+          Fetched Data <br />
+          <br />
+          <div class="fetched-data">
+            UPC <br />
+            <input id="result-upc" name="upc" disabled="disabled" value="" type="number" />
+            <br />
+            SKU <br />
+            <input id="result-sku" name="sku" disabled="disabled" value="" type="number" />
+            <br />
+            Current Owner ID <br />
+            <input id="result-owner-id" name="ownerID" disabled="disabled" size="50" type="text" />
+            <br />
+            Origin Farmer ID <br />
+            <input id="result-farmer-id" name="farmerID" disabled="disabled" value="" size="50" type="text" />
+            <br />
+            <div style="text-align: justify">Origin Farmer Name</div>
+            <input id="result-farmer-name" name="farmerName" disabled="disabled" value="" size="50" type="text" />
+            <br />
+            Origin Farm Information <br />
+            <input id="result-farm-info" name="farmInfo" disabled="disabled" value="" size="50" type="text" />
+            <br />
+            Origin Farm Latitude <br />
+            <input id="result-farm-lat" name="originFarmLatitude" disabled="disabled" value="" size="50" type="text" />
+            <br />
+            Origin Farm Longitude <br />
+            <input id="result-farm-long" name="originFarmLongitude" disabled="disabled" value="" size="50"
               type="text" />
-            <div class="buttons-group">
-              <button class="button-medium" type="button" data-id="10">
-                Is Farmer
-              </button>
-              <button class="button-big" type="button" data-id="11">
-                Add Farmer
-              </button>
-              <h4 class="is-role" id="is-farmer"></h4>
-              <h4 class="is-not-role" id="is-not-farmer"></h4>
-            </div>
-            <div class="buttons-group">
-              <button class="button-medium" type="button" data-id="12">
-                Is Distributor
-              </button>
-              <button class="button-big" type="button" data-id="13">
-                Add Distributor
-              </button>
-              <h4 class="is-role" id="is-distributor"></h4>
-              <h4 class="is-not-role" id="is-not-distributor"></h4>
-            </div>
-            <div class="buttons-group">
-              <button class="button-medium" type="button" data-id="14">
-                Is Retailer
-              </button>
-              <button class="button-big" type="button" data-id="15">
-                Add Retailer
-              </button>
-              <h4 class="is-role" id="is-retailer"></h4>
-              <h4 class="is-not-role" id="is-not-retailer"></h4>
-            </div>
-            <div class="buttons-group">
-              <button class="button-medium" type="button" data-id="16">
-                Is Consumer
-              </button>
-              <button class="button-big" type="button" data-id="17">
-                Add Consumer
-              </button>
-              <h4 class="is-role" id="is-consumer"></h4>
-              <h4 class="is-not-role" id="is-not-consumer"></h4>
-            </div>
+            <br />Product ID <br />
+            <input id="result-product-id" name="productID" disabled="disabled" value="" size="50" type="text" />
+            <br />Product Notes <br />
+            <input id="result-product-notes" name="productNotes" disabled="disabled" value="" size="50" type="text" />
+            <br />Product Price <br />
+            <input id="result-product-price" name="productPrice" disabled="disabled" value="" size="50" type="text" />
+            <br />Item State <br />
+            <input id="result-item-state" name="itemState" disabled="disabled" value="" size="50" type="text" />
+            <br />Distributor ID <br />
+            <input id="result-distributor-id" name="distributorID" disabled="disabled" value="" size="50" type="text" />
+            <br />Retailer ID <br />
+            <input id="result-retailer-id" name="reatilerID" disabled="disabled" value="" size="50" type="text" />
+            <br />Consumer ID <br />
+            <input id="result-consumer-id" name="consumerID" disabled="disabled" value="" size="50" type="text" />
             <br />
-            <h2>Transaction History<span id="ftc-history"></span></h2>
-            <div>
-              <ul id="ftc-events">
-                <!-- Events will appear here from app.js -->
-              </ul>
-              <br />
-              <hr />
-            </div>
-          </td>
-          <td class="page-column-right">
-            <h2>Farm Details</h2>
-            Active ID <br />
-            <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
-            UPC <br />
-            <input id="upc" name="upc" placeholder="1" type="number" /><br />
-            Farm Name <br />
-            <input id="origin-farm-name" name="originFarmName" placeholder="John Doe" type="text" /><br />
-            Farm Information <br />
-            <input id="origin-farm-information" name="originFarmInformation" placeholder="Yarra Valley"
-              type="text" /><br />
-            Farm Latitude <br />
-            <input id="origin-farm-latitude" name="originFarmLatitude" placeholder="-38.239770" type="text" /><br />
-            Farm Longitude <br />
-            <input id="origin-farm-longitude" name="originFarmLongitude" placeholder="144.341490" type="text" /><br />
-            Product Notes <br />
-            <input id="product-notes" name="productNotes" placeholder="Best beans for Espresso" size="60" type="text" />
-            <h5 class="form-error" id="harvest-error" style="display: none;"></h5><br />
-            <div class="buttons-group">
-              <button class="button-medium" id="button" type="button" data-id="1">
-                Harvest
-              </button>
-            </div>
+          </div>
+          <br />
+          <h2>User Account Details</h2>
+
+          Active ID <br />
+          <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
+          Check ID role or add ID to a role<br />
+          <input id="check-id" name="checkID" placeholder="0x99c289eb2aacec289631a5ddf62cf27a63d4494f" size="50"
+            type="text" />
+          <div class="buttons-group">
+            <button class="button-medium" type="button" data-id="10">
+              Is Farmer
+            </button>
+            <button class="button-big" type="button" data-id="11">
+              Add Farmer
+            </button>
+            <h4 class="is-role" id="is-farmer"></h4>
+            <h4 class="is-not-role" id="is-not-farmer"></h4>
+          </div>
+          <div class="buttons-group">
+            <button class="button-medium" type="button" data-id="12">
+              Is Distributor
+            </button>
+            <button class="button-big" type="button" data-id="13">
+              Add Distributor
+            </button>
+            <h4 class="is-role" id="is-distributor"></h4>
+            <h4 class="is-not-role" id="is-not-distributor"></h4>
+          </div>
+          <div class="buttons-group">
+            <button class="button-medium" type="button" data-id="14">
+              Is Retailer
+            </button>
+            <button class="button-big" type="button" data-id="15">
+              Add Retailer
+            </button>
+            <h4 class="is-role" id="is-retailer"></h4>
+            <h4 class="is-not-role" id="is-not-retailer"></h4>
+          </div>
+          <div class="buttons-group">
+            <button class="button-medium" type="button" data-id="16">
+              Is Consumer
+            </button>
+            <button class="button-big" type="button" data-id="17">
+              Add Consumer
+            </button>
+            <h4 class="is-role" id="is-consumer"></h4>
+            <h4 class="is-not-role" id="is-not-consumer"></h4>
+          </div>
+          <br />
+          <h2>Transaction History<span id="ftc-history"></span></h2>
+          <div>
+            <ul id="ftc-events">
+              <!-- Events will appear here from app.js -->
+            </ul>
             <br />
-            <br />
-            Active ID
-            <br />
-            <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" />
-            <br />
-            UPC
-            <br />
-            <input id="process-upc" name="upc" placeholder="1" type="number" />
-            <h5 class="form-error" id="process-error" style="display: none;"></h5><br />
-            <div class="buttons-group">
-              <button class="button-medium" id="button" type="button" data-id="2">
-                Process
-              </button>
-              <button class="button-medium" id="button" type="button" data-id="3">
-                Pack
-              </button>
-            </div>
-            <br />
-            <br />
-            Active ID <br />
-            <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
-            UPC <br />
-            <input id="sell-upc" name="upc" placeholder="1" type="number" /><br />
-            Product Price (ETH) <br />
-            <input id="sell-price" name="productPrice" placeholder="1" type="number" />
-            <h5 class="form-error" id="sell-error" style="display: none;"></h5><br />
-            <div class="buttons-group">
-              <button class="button-medium" id="button" type="button" data-id="4">
-                Sell
-              </button>
-            </div>
-            <br />
-            <h2>Product Details</h2>
-            Active ID <br />
-            <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
-            UPC <br />
-            <input id="buy-upc" name="upc" placeholder="1" type="number" />
-            <h5 class="form-error" id="buy-error" style="display: none;"></h5><br />
-            <div class="buttons-group">
-              <button class="button-medium" id="button" type="button" data-id="5">
-                Buy
-              </button>
-              <button class="button-medium" id="button" type="button" data-id="6">
-                Ship
-              </button>
-            </div>
-            <br />
-            <br />
-            Active ID <br />
-            <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
-            UPC <br />
-            <input id="receive-upc" name="upc" placeholder="1" type="number" />
-            <h5 class="form-error" id="receive-error" style="display: none;"></h5><br />
-            <div class="buttons-group">
-              <button class="button-medium" id="button" type="button" data-id="7">
-                Receive
-              </button>
-            </div>
-            <br />
-            <br />
-            Active ID <br />
-            <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
-            UPC <br />
-            <input id="purchase-upc" name="upc" placeholder="1" type="number" />
-            <h5 class="form-error" id="purchase-error" style="display: none;"></h5><br />
-            <div class="buttons-group">
-              <button class="button-medium" id="button" type="button" data-id="8">
-                Purchase
-              </button>
-            </div>
-            <div class="form-break"></div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            <hr />
+          </div>
+        </div>
+        <div class="page-column-right">
+          <h2>Farm Details</h2>
+          Active ID <br />
+          <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
+          UPC <br />
+          <input id="upc" name="upc" placeholder="1" type="number" /><br />
+          Farm Name <br />
+          <input id="origin-farm-name" name="originFarmName" placeholder="John Doe" type="text" /><br />
+          Farm Information <br />
+          <input id="origin-farm-information" name="originFarmInformation" placeholder="Yarra Valley"
+            type="text" /><br />
+          Farm Latitude <br />
+          <input id="origin-farm-latitude" name="originFarmLatitude" placeholder="-38.239770" type="text" /><br />
+          Farm Longitude <br />
+          <input id="origin-farm-longitude" name="originFarmLongitude" placeholder="144.341490" type="text" /><br />
+          Product Notes <br />
+          <input id="product-notes" name="productNotes" placeholder="Best beans for Espresso" size="60" type="text" />
+          <h5 class="form-error" id="harvest-error" style="display: none"></h5>
+          <br />
+          <div class="buttons-group">
+            <button class="button-medium" id="button" type="button" data-id="1">
+              Harvest
+            </button>
+          </div>
+          <br />
+          <br />
+          Active ID
+          <br />
+          <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" />
+          <br />
+          UPC
+          <br />
+          <input id="process-upc" name="upc" placeholder="1" type="number" />
+          <h5 class="form-error" id="process-error" style="display: none"></h5>
+          <br />
+          <div class="buttons-group">
+            <button class="button-medium" id="button" type="button" data-id="2">
+              Process
+            </button>
+            <button class="button-medium" id="button" type="button" data-id="3">
+              Pack
+            </button>
+          </div>
+          <br />
+          <br />
+          Active ID <br />
+          <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
+          UPC <br />
+          <input id="sell-upc" name="upc" placeholder="1" type="number" /><br />
+          Product Price (ETH) <br />
+          <input id="sell-price" name="productPrice" placeholder="1" type="number" />
+          <h5 class="form-error" id="sell-error" style="display: none"></h5>
+          <br />
+          <div class="buttons-group">
+            <button class="button-medium" id="button" type="button" data-id="4">
+              Sell
+            </button>
+          </div>
+          <br />
+          <h2>Product Details</h2>
+          Active ID <br />
+          <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
+          UPC <br />
+          <input id="buy-upc" name="upc" placeholder="1" type="number" />
+          <h5 class="form-error" id="buy-error" style="display: none"></h5>
+          <br />
+          <div class="buttons-group">
+            <button class="button-medium" id="button" type="button" data-id="5">
+              Buy
+            </button>
+            <button class="button-medium" id="button" type="button" data-id="6">
+              Ship
+            </button>
+          </div>
+          <br />
+          <br />
+          Active ID <br />
+          <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
+          UPC <br />
+          <input id="receive-upc" name="upc" placeholder="1" type="number" />
+          <h5 class="form-error" id="receive-error" style="display: none"></h5>
+          <br />
+          <div class="buttons-group">
+            <button class="button-medium" id="button" type="button" data-id="7">
+              Receive
+            </button>
+          </div>
+          <br />
+          <br />
+          Active ID <br />
+          <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
+          UPC <br />
+          <input id="purchase-upc" name="upc" placeholder="1" type="number" />
+          <h5 class="form-error" id="purchase-error" style="display: none"></h5>
+          <br />
+          <div class="buttons-group">
+            <button class="button-medium" id="button" type="button" data-id="8">
+              Purchase
+            </button>
+          </div>
+          <div class="form-break"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

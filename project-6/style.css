@@ -9,6 +9,11 @@ body {
   margin: 0 auto;
 }
 
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
 
 .bold { 
   font-weight: bolder;
@@ -74,14 +79,15 @@ button {
 }
 
 .page-column-left {
-  padding-left: 64px; 
-  /* display: flex;  */
+  display: flex;
+  padding-left: 32px; 
   flex-direction: column;
   border-right: #CCCCCC88 solid 1px;
   padding-right: 64px;
 }
 
 .page-column-right {
+  display: flex;
   padding-left: 64px; 
   display: flex; 
   flex-direction: column;
@@ -144,3 +150,4 @@ button {
   margin-bottom: 0px;
   margin-left: 16px;
 }
+ 
