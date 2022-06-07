@@ -129,6 +129,7 @@ App = {
     document.querySelector("#process-error").style.display = "none";
     document.querySelector("#sell-error").style.display = "none";
     document.querySelector("#buy-error").style.display = "none";
+    document.querySelector("#receive-error").style.display = "none";
   },
 
   handleButtonClick: async function (event) {
@@ -408,16 +409,27 @@ App = {
 
   receiveItem: function (event) {
     event.preventDefault();
+    function showError(error) {
+      const errorNode = document.querySelector("#receive-error");
+      errorNode.style.display = "block";
+      errorNode.textContent = error;
+    }
+
+    const receiveUpc = $("#receive-upc").val();
+    if (!receiveUpc) {
+      showError("Please fill in UPC");
+      return;
+    }
     App.contracts.SupplyChain.deployed()
       .then(function (instance) {
-        const buyUpc = $("#buy-upc").val();
-        return instance.receiveItem(buyUpc, { from: App.metamaskAccountID });
+        return instance.receiveItem(receiveUpc, { from: App.metamaskAccountID });
       })
       .then(function (result) {
         $("#ftc-item").text(result);
         console.log("receiveItem", result);
       })
       .catch(function (err) {
+        showError(err.message);
         console.log(err.message);
       });
   },
