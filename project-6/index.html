@@ -137,6 +137,15 @@
               <h4 class="is-role" id="is-consumer"></h4>
               <h4 class="is-not-role" id="is-not-consumer"></h4>
             </div>
+            <br />
+            <h2>Transaction History<span id="ftc-history"></span></h2>
+            <div>
+              <ul id="ftc-events">
+                <!-- Events will appear here from app.js -->
+              </ul>
+              <br />
+              <hr />
+            </div>
           </td>
           <td class="page-column-right">
             <h2>Farm Details</h2>
@@ -162,6 +171,7 @@
               </button>
             </div>
             <br />
+            <br />
             Active ID
             <br />
             <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" />
@@ -178,6 +188,7 @@
                 Pack
               </button>
             </div>
+            <br />
             <br />
             Active ID <br />
             <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
@@ -196,18 +207,35 @@
             Active ID <br />
             <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
             UPC <br />
-            <input id="buy-upc" name="upc" placeholder="1" type="number" /><br />
+            <input id="buy-upc" name="upc" placeholder="1" type="number" />
+            <h5 class="form-error" id="buy-error" style="display: none;"></h5><br />
             <div class="buttons-group">
-              <button class="btn-buy" id="button" type="button" data-id="5">
+              <button class="button-medium" id="button" type="button" data-id="5">
                 Buy
               </button>
-              <button class="btn-buy" id="button" type="button" data-id="6">
+              <button class="button-medium" id="button" type="button" data-id="6">
                 Ship
               </button>
-              <button class="btn-buy" id="button" type="button" data-id="7">
+            </div>
+            <br />
+            <br />
+            Active ID <br />
+            <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
+            UPC <br />
+            <input id="buy-upc" name="upc" placeholder="1" type="number" /><br />
+            <div class="buttons-group">
+              <button class="button-medium" id="button" type="button" data-id="7">
                 Receive
               </button>
-              <button class="btn-buy" id="button" type="button" data-id="8">
+            </div>
+            <br />
+            <br />
+            Active ID <br />
+            <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
+            UPC <br />
+            <input id="buy-upc" name="upc" placeholder="1" type="number" /><br />
+            <div class="buttons-group">
+              <button class="button-medium" id="button" type="button" data-id="8">
                 Purchase
               </button>
             </div>
@@ -216,18 +244,6 @@
         </tr>
       </tbody>
     </table>
-    <h2>Transaction History<span id="ftc-history"></span></h2>
-    <div>
-      <ul id="ftc-events">
-        <!-- Events will appear here from app.js -->
-      </ul>
-      <br />
-      <hr />
-    </div>
-  </div>
-  <div id="ftc-harvest">
-    <div class="form-break"></div>
-    <hr />
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

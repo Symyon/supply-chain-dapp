@@ -128,6 +128,7 @@ App = {
     document.querySelector("#harvest-error").style.display = "none";
     document.querySelector("#process-error").style.display = "none";
     document.querySelector("#sell-error").style.display = "none";
+    document.querySelector("#buy-error").style.display = "none";
   },
 
   handleButtonClick: async function (event) {
@@ -337,29 +338,62 @@ App = {
 
   buyItem: function (event) {
     event.preventDefault();
+    function showError(error) {
+      const errorNode = document.querySelector("#buy-error");
+      errorNode.style.display = "block";
+      errorNode.textContent = error;
+    }
+
+    const buyUpc = $("#buy-upc").val();
+    if (!buyUpc) {
+      showError("Please fill in UPC");
+      return;
+    }
     App.contracts.SupplyChain.deployed()
       .then(function (instance) {
-        const buyUpc = $("#buy-upc").val();
-        const walletValue = web3.toWei(3, "ether");
-        return instance.buyItem(buyUpc, {
-          from: App.metamaskAccountID,
-          value: walletValue,
-        });
+        return instance.fetchItemBufferTwo.call(buyUpc);
       })
       .then(function (result) {
-        $("#ftc-item").text(result);
-        console.log("buyItem", result);
+        console.log("itemData", result);
+        const price = result[4];
+
+        App.contracts.SupplyChain.deployed()
+          .then(function (instance) {
+            return instance.buyItem(buyUpc, {
+              from: App.metamaskAccountID,
+              value: price,
+            });
+          })
+          .then(function (result) {
+            $("#ftc-item").text(result);
+            console.log("buyItem", result);
+          })
+          .catch(function (err) {
+            showError(err.message);
+            console.log(err.message);
+          });
       })
       .catch(function (err) {
+        showError(err.message);
         console.log(err.message);
       });
   },
 
   shipItem: function (event) {
     event.preventDefault();
+    function showError(error) {
+      const errorNode = document.querySelector("#buy-error");
+      errorNode.style.display = "block";
+      errorNode.textContent = error;
+    }
+
+    const buyUpc = $("#buy-upc").val();
+    if (!buyUpc) {
+      showError("Please fill in UPC");
+      return;
+    }
     App.contracts.SupplyChain.deployed()
       .then(function (instance) {
-        const buyUpc = $("#buy-upc").val();
         return instance.shipItem(buyUpc, { from: App.metamaskAccountID });
       })
       .then(function (result) {
@@ -367,6 +401,7 @@ App = {
         console.log("shipItem", result);
       })
       .catch(function (err) {
+        showError(err.message);
         console.log(err.message);
       });
   },
