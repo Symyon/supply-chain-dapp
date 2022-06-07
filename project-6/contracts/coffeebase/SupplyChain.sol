@@ -150,8 +150,8 @@ contract SupplyChain is
     ) public onlyFarmer {
         // Add the new item as part of Harvest
         items[_upc] = Item(
-            _upc,
             sku,
+            _upc,
             msg.sender,
             _originFarmerID,
             _originFarmName,
