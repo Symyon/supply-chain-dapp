@@ -127,6 +127,7 @@ App = {
   clearErrors: function () {
     document.querySelector("#harvest-error").style.display = "none";
     document.querySelector("#process-error").style.display = "none";
+    document.querySelector("#sell-error").style.display = "none";
   },
 
   handleButtonClick: async function (event) {
@@ -303,11 +304,24 @@ App = {
 
   sellItem: function (event) {
     event.preventDefault();
+    function showError(error) {
+      const errorNode = document.querySelector("#sell-error");
+      errorNode.style.display = "block";
+      errorNode.textContent = error;
+    }
+
+    const sellUpc = $("#sell-upc").val();
+    const sellPrice = $("#sell-price").val();
+
+    if (!sellUpc || !sellPrice) {
+      showError("Please fill in all fields");
+      return;
+    }
+
     App.contracts.SupplyChain.deployed()
       .then(function (instance) {
-        const sellPrice = $("#sell-price").val();
         const productPrice = web3.toWei(sellPrice, "ether");
-        return instance.sellItem(App.upc, productPrice, {
+        return instance.sellItem(sellUpc, productPrice, {
           from: App.metamaskAccountID,
         });
       })
@@ -316,6 +330,7 @@ App = {
         console.log("sellItem", result);
       })
       .catch(function (err) {
+        showError(err.message);
         console.log(err.message);
       });
   },
@@ -417,7 +432,10 @@ App = {
       .then(function (result) {
         document.querySelector("#result-product-id").value = result[2];
         document.querySelector("#result-product-notes").value = result[3];
-        document.querySelector("#result-product-price").value = result[4];
+        document.querySelector("#result-product-price").value = web3.fromWei(
+          result[4],
+          "ether"
+        );
         function getState(state) {
           switch (state) {
             case 0:
