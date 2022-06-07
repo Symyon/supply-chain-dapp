@@ -80,7 +80,9 @@ button {
 }
 
 .buttons-group {
+  display: flex;
   flex-direction: row; 
+  align-items: center;
 }
 
 .fetched-data-table {
@@ -105,7 +107,17 @@ button {
 
 .button-big {
   width: 180px;
+  margin-right: 32px;
 }
+
 .button-medium {
   width: 160px;
+}
+
+.is-role {
+  color: #4CAF50;
+}
+
+.is-not-role {
+  color: #e4241d;
 }

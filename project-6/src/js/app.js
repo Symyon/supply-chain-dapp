@@ -124,6 +124,18 @@ App = {
 
   bindEvents: function () {
     $(document).on("click", App.handleButtonClick);
+    document
+      .querySelector("#check-id")
+      .addEventListener("input", function (evt) {
+        document.querySelector("#is-farmer").textContent = "";
+        document.querySelector("#is-not-farmer").textContent = "";
+        document.querySelector("#is-distributor").textContent = "";
+        document.querySelector("#is-not-distributor").textContent = "";
+        document.querySelector("#is-retailer").textContent = "";
+        document.querySelector("#is-not-retailer").textContent = "";
+        document.querySelector("#is-consumer").textContent = "";
+        document.querySelector("#is-not-consumer").textContent = "";
+      });
   },
 
   setOwnerID: function (value) {
@@ -434,6 +446,14 @@ App = {
         return instance.isFarmer(checkAccount);
       })
       .then(function (result) {
+        if (result) {
+          document.querySelector("#is-farmer").textContent = "is Farmer";
+          document.querySelector("#is-not-farmer").textContent = "";
+        } else {
+          document.querySelector("#is-farmer").textContent = "";
+          document.querySelector("#is-not-farmer").textContent = "is no Farmer";
+        }
+
         $("#ftc-item").text(result);
         console.log("isFarmer", result);
       })
@@ -470,6 +490,15 @@ App = {
         return instance.isDistributor(checkAccount);
       })
       .then(function (result) {
+        if (result) {
+          document.querySelector("#is-distributor").textContent =
+            "is Distributor";
+          document.querySelector("#is-not-distributor").textContent = "";
+        } else {
+          document.querySelector("#is-distributor").textContent = "";
+          document.querySelector("#is-not-distributor").textContent =
+            "is no Distributor";
+        }
         $("#ftc-item").text(result);
         console.log("isDistributor", result);
       })
@@ -477,7 +506,7 @@ App = {
         console.log(err.message);
       });
   },
-  
+
   addDistributor: function (event) {
     event.preventDefault();
     var processId = parseInt($(event.target).data("id"));
@@ -506,6 +535,14 @@ App = {
         return instance.isRetailer(checkAccount);
       })
       .then(function (result) {
+        if (result) {
+          document.querySelector("#is-retailer").textContent = "is Retailer";
+          document.querySelector("#is-not-retailer").textContent = "";
+        } else {
+          document.querySelector("#is-retailer").textContent = "";
+          document.querySelector("#is-not-retailer").textContent =
+            "is no Retailer";
+        }
         $("#ftc-item").text(result);
         console.log("isRetailer", result);
       })
@@ -542,6 +579,14 @@ App = {
         return instance.isConsumer(checkAccount);
       })
       .then(function (result) {
+        if (result) {
+          document.querySelector("#is-consumer").textContent = "is Consumer";
+          document.querySelector("#is-not-consumer").textContent = "";
+        } else {
+          document.querySelector("#is-consumer").textContent = "";
+          document.querySelector("#is-not-consumer").textContent =
+            "is no Consumer";
+        }
         $("#ftc-item").text(result);
         console.log("isConsumer", result);
       })
