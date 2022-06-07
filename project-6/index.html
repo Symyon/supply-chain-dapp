@@ -24,9 +24,9 @@
       <div class="content">
         <div class="page-column-left">
           <h2 style="text-align: left">Product Overview</h2>
-          <div>
+          <div class="fetch-container">
             UPC <br />
-            <div class="fetched-data-table" border="0">
+            <div class="fetch-content">
               <input id="overview-upc" name="upc" value="1" type="number" />
               <button class="btn-fetchOne" id="button" type="button" data-id="9">
                 Fetch Data
@@ -135,10 +135,14 @@
             <hr />
           </div>
         </div>
+        
         <div class="page-column-right">
           <h2>Farm Details</h2>
-          Active ID <br />
+          <div>
+          <div class="title-row"><div>Active ID</div>  <div>not farmer</div></div>
+          <br />
           <input id="active-id" name="activeID" placeholder="Not connected" disabled size="50" type="text" /><br />
+        </div>
           UPC <br />
           <input id="upc" name="upc" placeholder="1" type="number" /><br />
           Farm Name <br />
@@ -235,7 +239,6 @@
               Purchase
             </button>
           </div>
-          <div class="form-break"></div>
         </div>
       </div>
     </div>

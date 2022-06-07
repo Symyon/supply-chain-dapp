@@ -12,6 +12,8 @@ body {
 .content {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  padding: 32px;
 }
 
 
@@ -72,23 +74,27 @@ button {
 }
 
 .fetched-data {
+  display: flex;
+  flex-direction: column;
   background-color:#C69B7B;
   color:white;
-  width:100%;
-  padding:20px;
+  padding: 32px;
 }
 
 .page-column-left {
   display: flex;
-  padding-left: 32px; 
+  padding-left: 64px; 
   flex-direction: column;
-  border-right: #CCCCCC88 solid 1px;
-  padding-right: 64px;
 }
 
-.page-column-right {
+.column-devider {
   display: flex;
-  padding-left: 64px; 
+  background-color: #cccccc33;
+  height: auto;
+  width: 1px;
+} 
+
+.page-column-right {
   display: flex; 
   flex-direction: column;
 }
@@ -99,11 +105,16 @@ button {
   align-items: center;
 }
 
-.fetched-data-table {
+.fetch-container {
+  width: 100%;
+}
+
+.fetch-content {
   display: flex;
   flex-direction: row;
   height: 64px;
   align-items: center;
+  justify-content: space-between;
 }
 
 .btn-fetchOne {
@@ -118,6 +129,13 @@ button {
   display: flex;
  align-items: center;
  justify-content: center;
+}
+
+.title-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .button-big {
