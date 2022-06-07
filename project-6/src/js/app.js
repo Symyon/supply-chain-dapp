@@ -130,6 +130,7 @@ App = {
     document.querySelector("#sell-error").style.display = "none";
     document.querySelector("#buy-error").style.display = "none";
     document.querySelector("#receive-error").style.display = "none";
+    document.querySelector("#purchase-error").style.display = "none";
   },
 
   handleButtonClick: async function (event) {
@@ -422,7 +423,9 @@ App = {
     }
     App.contracts.SupplyChain.deployed()
       .then(function (instance) {
-        return instance.receiveItem(receiveUpc, { from: App.metamaskAccountID });
+        return instance.receiveItem(receiveUpc, {
+          from: App.metamaskAccountID,
+        });
       })
       .then(function (result) {
         $("#ftc-item").text(result);
@@ -436,16 +439,30 @@ App = {
 
   purchaseItem: function (event) {
     event.preventDefault();
+    function showError(error) {
+      const errorNode = document.querySelector("#purchase-error");
+      errorNode.style.display = "block";
+      errorNode.textContent = error;
+    }
+
+    const purchaseUpc = $("#purchase-upc").val();
+    if (!purchaseUpc) {
+      showError("Please fill in UPC");
+      return;
+    }
+
     App.contracts.SupplyChain.deployed()
       .then(function (instance) {
-        const buyUpc = $("#buy-upc").val();
-        return instance.purchaseItem(buyUpc, { from: App.metamaskAccountID });
+        return instance.purchaseItem(purchaseUpc, {
+          from: App.metamaskAccountID,
+        });
       })
       .then(function (result) {
         $("#ftc-item").text(result);
         console.log("purchaseItem", result);
       })
       .catch(function (err) {
+        showError(err.message);
         console.log(err.message);
       });
   },
