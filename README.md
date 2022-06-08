@@ -1,17 +1,28 @@
 # Supply chain & data auditing
 
-This repository containts an Ethereum DApp that demonstrates a Supply Chain flow between a Seller and Buyer. The user story is similar to any commonly used supply chain process. A Seller can add items to the inventory system stored in the blockchain. A Buyer can purchase such items from the inventory system. Additionally a Seller can mark an item as Shipped, and similarly a Buyer can mark an item as Received.
+This repository containts an Ethereum DApp that demonstrates a Supply Chain flow between a few parties, a Farmer, a Distributor, a Retailer and a Consumer. The user story is similar to any commonly used supply chain process. A Farmer can add coffee items to the inventory by harvesting them,then same Farmer can process, pack and put the item for sale.A Distributor can Buy and Ship the item and lastly Retailer can mark it as Received and Consumer set the item as Purchased. Every action has to be made by an actor with the required respective role. The interface will let the connected user know if it posses the required role already as well as it offers a little tool with an interface to check other accouns as well as set role for certain accounts. Account roles can be set only by someone that has same role already. So Distributor can and A distributor, Farmer a Farmer etc. The Owner of the contract has by default all 4 roles and ca be the initial source of role granting. 
+A mention on the interface of the app is that each it is separted in sections of actions delimited by the action buttons. Each section has an UPC field that is releveant to that section alone, that permits to query data for an itme with a certain UPC, while performing Harvesting on another, while setting another UPC as Received etc. 
+Bottom of the interface should show a list of transaction that are being made.
+While not exhaustive, the interace is trying to help the user by validating form before an action and showing error in case soemthing went wrong. Fields that aren't suppose to be edited, can't be edited. Active ID fields are auto populated with the connected account and are present for each section of the app, to be easier to understand who is doing the action and on what item with the sepcific UPC.
 
-The DApp User Interface when running should look like...
+## How it looks (user interface)
 
-![truffle test](images/ftc_product_overview.png)
+![interface](images/coffee-supply chain-page-1.png)
 
-![truffle test](images/ftc_farm_details.png)
+![interface](images/coffee-supply chain-page-2.png)
 
-![truffle test](images/ftc_product_details.png)
+![interface](images/coffee-supply chain-page-3.png)
 
-![truffle test](images/ftc_transaction_history.png)
 
+## How it works (diagrams)
+### Activity Diagram
+![interface](diagrams/Activity Diagram.png)
+### Sequence Diagram
+![interface](diagrams/Sequence Diagram.png)
+### State Diagram
+![interface](diagrams/State Diagram.png)
+### Data Diagram
+![interface](diagrams/Data Diagram.png)
 
 ## Getting Started
 
@@ -27,14 +38,14 @@ Give examples (to be clarified)
 
 ### Installing
 
-> The starter code is written for **Solidity v0.4.24**. At the time of writing, the current Truffle v5 comes with Solidity v0.5 that requires function *mutability* and *visibility* to be specified (please refer to Solidity [documentation](https://docs.soliditylang.org/en/v0.5.0/050-breaking-changes.html) for more details). To use this starter code, please run `npm i -g truffle@4.1.14` to install Truffle v4 with Solidity v0.4.24. 
+> The starter code is written for **Solidity v0.5.16**. At the time of writing, the current Truffle v5 comes with Solidity v0.5, thus the change for theinitial boiler plate solidity version.
 
 A step by step series of examples that tell you have to get a development env running
 
 Clone this repository:
 
 ```
-git clone https://github.com/udacity/nd1309/tree/master/course-5/project-6
+git clone https://github.com/Symyon/supply-chain-dapp.git
 ```
 
 Change directory to ```project-6``` folder and install all requisite npm packages (as listed in ```package.json```):
@@ -99,10 +110,16 @@ npm run dev
 to make the web faster, safer, and more open.
 * [Truffle Framework](http://truffleframework.com/) - Truffle is the most popular development framework for Ethereum with a mission to make your life a whole lot easier.
 
+## Notable Libraries used
+* web3 - for blockchain interaction
+* @truffle/hdwallet-provider - for the possibility of performing transactions (sign/send ETH) through a web/browser wallet.
 
 ## Authors
 
-See also the list of [contributors](https://github.com/your/project/contributors.md) who participated in this project.
+The project is a forc from the Udacity boiler plate project offered in the Blockchain Developer Nanodegree program:
+https://github.com/udacity/nd1309-Project-6b-Example-Template
+
+All other changes are made by @symyon
 
 ## Acknowledgments
 
