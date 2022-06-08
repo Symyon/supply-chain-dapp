@@ -16,13 +16,13 @@ While not exhaustive, the interace is trying to help the user by validating form
 
 ## How it works (diagrams)
 ### Activity Diagram
-![truffle test](diagrams/Activity Diagram.png)
+![truffle test](diagrams/Activity-Diagram.png)
 ### Sequence Diagram
-![truffle test](diagrams/Sequence Diagram.png)
+![truffle test](diagrams/Sequence-Diagram.png)
 ### State Diagram
-![truffle test](diagrams/State Diagram.png)
+![truffle test](diagrams/State-Diagram.png)
 ### Data Diagram
-![truffle test](diagrams/Data Diagram.png)
+![truffle test](diagrams/Data-Diagram.png)
 
 ## Getting Started
 
