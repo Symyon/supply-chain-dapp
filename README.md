@@ -7,22 +7,22 @@ While not exhaustive, the interace is trying to help the user by validating form
 
 ## How it looks (user interface)
 
-![interface](images/coffee-supply chain-page-1.png)
+![truffle test](images/coffee-supply chain-page-1.png)
 
-![interface](images/coffee-supply chain-page-2.png)
+![truffle test](images/coffee-supply chain-page-2.png)
 
-![interface](images/coffee-supply chain-page-3.png)
+![truffle test](images/coffee-supply chain-page-3.png)
 
 
 ## How it works (diagrams)
 ### Activity Diagram
-![interface](diagrams/Activity Diagram.png)
+![truffle test](diagrams/Activity Diagram.png)
 ### Sequence Diagram
-![interface](diagrams/Sequence Diagram.png)
+![truffle test](diagrams/Sequence Diagram.png)
 ### State Diagram
-![interface](diagrams/State Diagram.png)
+![truffle test](diagrams/State Diagram.png)
 ### Data Diagram
-![interface](diagrams/Data Diagram.png)
+![truffle test](diagrams/Data Diagram.png)
 
 ## Getting Started
 
