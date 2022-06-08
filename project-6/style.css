@@ -7,6 +7,7 @@ body {
 .container {
   width: 80%;
   margin: 0 auto;
+  max-width: 1440px;
 }
 
 .content {
@@ -55,8 +56,6 @@ button {
 .form-group {
   background-color:#C69B7B;
   color:black;
-  width:100%;
-  max-width: 1440px;
   padding:30px;
   border-radius: 4px;
   background-color: #f8f8f8;
