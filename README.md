@@ -7,11 +7,11 @@ While not exhaustive, the interace is trying to help the user by validating form
 
 ## How it looks (user interface)
 
-![truffle test](images/coffee-supply chain-page-1.png)
+![truffle test](images/coffee-supply-chain-page-1.png)
 
-![truffle test](images/coffee-supply chain-page-2.png)
+![truffle test](images/coffee-supply-chain-page-2.png)
 
-![truffle test](images/coffee-supply chain-page-3.png)
+![truffle test](images/coffee-supply-chain-page-3.png)
 
 
 ## How it works (diagrams)
