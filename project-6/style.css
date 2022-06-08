@@ -83,7 +83,8 @@ button {
 
 .page-column-left {
   display: flex;
-  padding-left: 64px; 
+  padding-left: 64px;
+  padding-right: 64px; 
   flex-direction: column;
 }
 
@@ -96,6 +97,8 @@ button {
 
 .page-column-right {
   display: flex; 
+  padding-left: 64px;
+  padding-right: 32px;
   flex-direction: column;
 }
 
@@ -136,6 +139,7 @@ button {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding-right: 64px;
 }
 
 .button-big {

@@ -77,10 +77,13 @@ App = {
       }
       console.log("getMetaskID:", res);
       App.metamaskAccountID = res[0];
+
       const activeIDNodes = document.querySelectorAll("#active-id");
       activeIDNodes.forEach(function (node) {
-        node.value = res[0];
+        node.value = res[0] ? res[0] : "Not connected";
       });
+
+      App.checkAcountRoles();
     });
   },
 
@@ -96,8 +99,6 @@ App = {
       App.contracts.SupplyChain = TruffleContract(SupplyChainArtifact);
       App.contracts.SupplyChain.setProvider(App.web3Provider);
 
-      App.fetchItemBufferOne();
-      App.fetchItemBufferTwo();
       App.fetchEvents();
     });
 
@@ -728,6 +729,89 @@ App = {
         $("#ftc-item").text(result);
         console.log("addConsumer", result);
       })
+      .catch(function (err) {
+        console.log(err.message);
+      });
+  },
+
+  checkAcountRoles: function (event) {
+    App.contracts.SupplyChain.deployed()
+      .then(function (instance) {
+        const checkAccount = document.querySelector("#active-id").value;
+        const activeFarmerNodes = document.querySelectorAll("#active-farmer");
+        const activeDistributorNodes = document.querySelectorAll(
+          "#active-distributor"
+        );
+        const activeRetailerNodes =
+          document.querySelectorAll("#active-retailer");
+        const activeConsumerNodes =
+          document.querySelectorAll("#active-consumer");
+
+        if (checkAccount.substring(0, 2) !== "0x") {
+          activeFarmerNodes.forEach((node) => (node.textContent = ""));
+          activeDistributorNodes.forEach((node) => (node.textContent = ""));
+          activeRetailerNodes.forEach((node) => (node.textContent = ""));
+          activeConsumerNodes.forEach((node) => (node.textContent = ""));
+          return;
+        }
+
+        instance.isFarmer(checkAccount).then(function (result) {
+          if (result) {
+            activeFarmerNodes.forEach(function (node) {
+              node.textContent = "Account is a Farmer";
+              node.style.color = "green";
+            });
+          } else {
+            activeFarmerNodes.forEach(function (node) {
+              node.textContent = "Account is not a Farmer";
+              node.style.color = "red";
+            });
+          }
+        });
+
+        instance.isDistributor(checkAccount).then(function (result) {
+          if (result) {
+            activeDistributorNodes.forEach(function (node) {
+              node.textContent = "Account is a Distributor";
+              node.style.color = "green";
+            });
+          } else {
+            activeDistributorNodes.forEach(function (node) {
+              node.textContent = "Accpount is not a Distributor";
+              node.style.color = "red";
+            });
+          }
+        });
+
+        instance.isRetailer(checkAccount).then(function (result) {
+          if (result) {
+            activeRetailerNodes.forEach(function (node) {
+              node.textContent = "Account is a Retailer";
+              node.style.color = "green";
+            });
+          } else {
+            activeRetailerNodes.forEach(function (node) {
+              node.textContent = "Accpount is not a Retailer";
+              node.style.color = "red";
+            });
+          }
+        });
+
+        instance.isConsumer(checkAccount).then(function (result) {
+          if (result) {
+            activeConsumerNodes.forEach(function (node) {
+              node.textContent = "Account is a Consumer";
+              node.style.color = "green";
+            });
+          } else {
+            activeConsumerNodes.forEach(function (node) {
+              node.textContent = "Accpount is not a Consumer";
+              node.style.color = "red";
+            });
+          }
+        });
+      })
+
       .catch(function (err) {
         console.log(err.message);
       });
