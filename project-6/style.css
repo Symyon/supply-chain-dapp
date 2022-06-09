@@ -141,6 +141,14 @@ button {
   padding-right: 64px;
 }
 
+.loading {
+  text-align: right;
+  color: #C69B7B; 
+  position: absolute; 
+  right: 64px; 
+  top: 32px;
+}
+
 .button-big {
   width: 180px;
   margin-right: 32px;
