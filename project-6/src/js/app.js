@@ -89,18 +89,18 @@ App = {
 
   initSupplyChain: function () {
     web3.eth.defaultAccount = web3.eth.accounts[0];
-    /// Source the truffle compiled smart contracts   
-    var jsonSupplyChain = "../../build/contracts/SupplyChain.json"
-
-     // JSONfy the smart contracts
+    /// Source the truffle compiled smart contracts
+    var jsonSupplyChain = "../../build/contracts/SupplyChain.json";
+    
+    // JSONfy the smart contracts
     $.getJSON(jsonSupplyChain, function (data) {
+      document.querySelector("#loading-indicator").textContent = "";
       console.log("data", data);
       var SupplyChainArtifact = data;
       App.contracts.SupplyChain = TruffleContract(SupplyChainArtifact);
       App.contracts.SupplyChain.setProvider(App.web3Provider);
 
       App.fetchEvents();
-      document.querySelector("#loading-indicator").textContent = "";
     });
 
     return App.bindEvents();
