@@ -105,7 +105,8 @@ npm run dev
 
 ## Built With
 * [Ethereum](https://www.ethereum.org/) - Ethereum is a decentralized platform that runs smart contracts
-* [IPFS](https://ipfs.io/) - IPFS is the Distributed Web | A peer-to-peer hypermedia protocol, a version of the website publiched on IPFS can be seen here: (https://gateway.ipfs.io/ipns/k51qzi5uqu5dh53b9suifldy7v1zzurxqyf5ilouo1qudl9gb4r9ec2tsq5vgc/)
+* [IPFS](https://ipfs.io/) - IPFS is the Distributed Web | A peer-to-peer hypermedia protocol, a version of the website publiched on IPFS can be seen here: (https://gateway.ipfs.io/ipns/k51qzi5uqu5dh53b9suifldy7v1zzurxqyf5ilouo1qudl9gb4r9ec2tsq5vgc/), the ABI for the smart contract used in that deployment was pinned on IPFS separatelly and read as an external spource, can be found here: https://gateway.pinata.cloud/ipfs/QmRs8saHn2eURZ1Z8jtbA4RuohnGeMUDYBcyeUDCsa8CXE.
+
 to make the web faster, safer, and more open.
 * [Truffle Framework](http://truffleframework.com/) - Truffle is the most popular development framework for Ethereum with a mission to make your life a whole lot easier.
 
